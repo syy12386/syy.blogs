@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>联系我 - 小羊星冰乐</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700;900&family=Noto+Sans+SC:wght@400;700;900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+    <div class="container contact-page">
+        <div class="card contact-form-card">
+            <div class="back-link">
+                <a href="index.html" class="btn btn-secondary">← 返回主页</a>
+            </div>
+            
+            <h1 class="contact-title">联系<span class="highlight">小羊星冰乐</span></h1>
+            
+            <p class="contact-intro">
+                很高兴你想要联系我！无论是合作机会、技术交流还是项目咨询，都欢迎给我留言。
+            </p>
+
+            <form class="contact-form" id="contactForm">
+                <div class="form-group">
+                    <label for="name">姓名</label>
+                    <input type="text" id="name" name="name" required>
+                </div>
+                
+                <div class="form-group">
+                    <label for="email">邮箱</label>
+                    <input type="email" id="email" name="email" required>
+                </div>
+                
+                <div class="form-group">
+                    <label for="subject">主题</label>
+                    <input type="text" id="subject" name="subject" required>
+                </div>
+                
+                <div class="form-group">
+                    <label for="message">留言内容</label>
+                    <textarea id="message" name="message" rows="5" required></textarea>
+                </div>
+                
+                <button type="submit" class="btn btn-primary btn-full">发送消息</button>
+            </form>
+
+            <div class="contact-info">
+                <h3 class="section-title">联系方式</h3>
+                <div class="info-list">
+                    <div class="info-item">
+                        <span class="info-icon">✉</span>
+                        <span>ssyuyang0643@163.com</span>
+                    </div>
+                    <div class="info-item">
+                        <span class="info-icon">GH</span>
+                        <a href="https://github.com/syy12386" target="_blank">github.com/syy12386</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <footer class="footer">
+            <p>&copy; 2026 小羊星冰乐. All rights reserved.</p>
+        </footer>
+    </div>
+
+    <script src="js/main.js"></script>
+</body>
+</html>

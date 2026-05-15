@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>小羊星冰乐 - 全栈开发者</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700;900&family=Noto+Sans+SC:wght@400;700;900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+    <div class="container">
+
+        <main class="main-grid">
+            <aside class="left-column">
+                <div class="card profile-card">
+                    <div class="avatar-container">
+                        <div class="avatar">
+                            <img src="source/1b5af59c8bf4daf5a54ea3a227bbfb26.jpg" alt="小羊星冰乐" class="avatar-img"/>
+                        </div>
+                    </div>
+                    <h2 class="profile-name">小羊星冰乐</h2>
+                    <p class="profile-bio">
+                        <span class="bio-name">SHEEP YANG</span>
+                    </p>
+                    <p class="profile-bio">
+                        <span class="highlight-text">ENFJ 人格</span> | 长期主义者
+                    </p>
+                    <p class="profile-bio">
+                        期待一起共创美好的未来！
+                    </p>
+                    <div class="contact-links">
+                        <a href="mailto:ssyuyang0643@163.com" class="contact-link">
+                            <span class="contact-icon">✉</span>
+                            <span>ssyuyang0643@163.com</span>
+                        </a>
+                        <a href="https://github.com/syy12386" class="contact-link" target="_blank">
+                            <span class="contact-icon">GH</span>
+                            <span>GitHub</span>
+                        </a>
+                    </div>
+                    <a href="contact.html" class="btn btn-primary">联系我</a>
+                </div>
+            </aside>
+
+            <section class="middle-column">
+                <div class="card intro-card">
+                    <p class="intro-greeting">Hello, I'm <span class="intro-name">小羊星冰乐</span></p>
+                    <div class="intro-typewriter">
+                        <span class="intro-highlight">安理计算机28届学子</span>
+                        <span class="intro-typing-text" id="intro-typing"></span>
+                        <span class="typing-cursor">|</span>
+                    </div>
+                    <p class="intro-motto">每一步向前，都在成为更好的自己。Let's build something amazing together.</p>
+                </div>
+
+                <div class="card footprints-link-card">
+                    <h3 class="section-title">我的足迹</h3>
+                    <div class="footprints-preview">
+                        <div style="border:3px solid #000; border-radius:12px; overflow:hidden; box-shadow:5px 5px 0 #000; height:250px; width:100%;">
+                          <div id="amap-home-container" style="width:100%; height:100%;"></div>
+                        </div>
+                        <script src="https://webapi.amap.com/maps?v=1.4.15&key=f1387d7959d15c09ace98d64531e30fb"></script>
+                        <script>
+                        var homeMap = new AMap.Map('amap-home-container', {
+                          zoom: 4,
+                          center: [116.397428, 39.90923],
+                          mapStyle: 'amap://styles/lightblue',
+                          viewMode: '3D'
+                        });
+
+                        var homeMarkers = [
+                          { lng: 116.4074, lat: 39.9042, city: "北京" },
+                          { lng: 113.2644, lat: 23.1291, city: "广州" },
+                          { lng: 118.7969, lat: 32.0603, city: "南京" },
+                          { lng: 117.2830, lat: 31.8612, city: "合肥" },
+                          { lng: 116.8344, lat: 32.9370, city: "淮南" }
+                        ];
+
+                        homeMarkers.forEach(function(point) {
+                          var starIcon = new AMap.Icon({
+                            size: new AMap.Size(32, 32),
+                            image: 'https://cdn-icons-png.flaticon.com/512/1828/1828884.png',
+                            imageSize: new AMap.Size(32, 32)
+                          });
+
+                          var marker = new AMap.Marker({
+                            position: new AMap.LngLat(point.lng, point.lat),
+                            icon: starIcon,
+                            offset: new AMap.Pixel(-16, -16)
+                          });
+
+                          marker.setMap(homeMap);
+                        });
+                        </script>
+                        <p class="footprints-desc">记录我走过的城市，点击查看详细足迹地图</p>
+                    </div>
+                    <a href="footprints.html" class="btn btn-secondary">查看足迹</a>
+                </div>
+
+                <div class="card projects-card">
+                    <h3 class="section-title">项目展示</h3>
+                    <div class="project-grid">
+                        <article class="project-item">
+                            <div class="project-image">
+                                <div class="project-placeholder">AI</div>
+                            </div>
+                            <h4 class="project-title">AI 图像识别系统</h4>
+                            <p class="project-desc">基于深度学习的图像分类与目标检测系统</p>
+                        </article>
+                        <article class="project-item">
+                            <div class="project-image">
+                                <div class="project-placeholder">WEB</div>
+                            </div>
+                            <h4 class="project-title">个人主页</h4>
+                            <p class="project-desc">响应式全栈个人作品展示网站</p>
+                        </article>
+                        <article class="project-item">
+                            <div class="project-image">
+                                <div class="project-placeholder">ML</div>
+                            </div>
+                            <h4 class="project-title">机器学习平台</h4>
+                            <p class="project-desc">端到端的机器学习模型训练与部署平台</p>
+                        </article>
+                        <article class="project-item">
+                            <div class="project-image">
+                                <div class="project-placeholder">API</div>
+                            </div>
+                            <h4 class="project-title">RESTful API</h4>
+                            <p class="project-desc">高性能后端接口服务</p>
+                        </article>
+                    </div>
+                </div>
+            </section>
+
+            <aside class="right-column">
+                <div class="card stats-card">
+                    <h3 class="section-title">我的博客</h3>
+                    <div class="blog-links">
+                        <a href="https://home.cnblogs.com/u/syy12386" class="blog-link-item" target="_blank">
+                            <span class="blog-link-icon">📝</span>
+                            <span class="blog-link-text">我的博客</span>
+                        </a>
+                        <a href="https://www.cnblogs.com/syy12386/p/20056524" class="blog-link-item" target="_blank">
+                            <span class="blog-link-icon">📚</span>
+                            <span class="blog-link-text">面试八股</span>
+                        </a>
+                        <a href="https://www.cnblogs.com/syy12386/collections/39765" class="blog-link-item" target="_blank">
+                            <span class="blog-link-icon">🤖</span>
+                            <span class="blog-link-text">AI 大模型</span>
+                        </a>
+                    </div>
+                </div>
+
+                <div class="card skills-card">
+                    <h3 class="section-title">技术栈</h3>
+                    <div class="skills-grid">
+                        <span class="skill-item">Java</span>
+                        <span class="skill-item">Spring</span>
+                        <span class="skill-item">JavaScript</span>
+                        <span class="skill-item">TypeScript</span>
+                        <span class="skill-item">Vue3</span>
+                        <span class="skill-item">MySQL</span>
+                        <span class="skill-item">Redis</span>
+                        <span class="skill-item">Kafka</span>
+                        <span class="skill-item">Docker</span>
+                        <span class="skill-item">Git</span>
+                    </div>
+                </div>
+
+            </aside>
+        </main>
+
+        <footer class="footer">
+            <p>&copy; 2026 小羊星冰乐. All rights reserved.</p>
+        </footer>
+    </div>
+
+    <script src="js/main.js"></script>
+</body>
+</html>
