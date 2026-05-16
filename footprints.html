@@ -34,11 +34,13 @@
             });
 
             var starMarkers = [
-              { lng: 116.4074, lat: 39.9042, city: "北京" },
-              { lng: 113.2644, lat: 23.1291, city: "广州" },
-              { lng: 118.7969, lat: 32.0603, city: "南京" },
-              { lng: 117.2830, lat: 31.8612, city: "合肥" },
-              { lng: 116.8344, lat: 32.9370, city: "淮南" }
+                { lng: 117.2830, lat: 31.8612, city: "合肥" },
+                { lng: 116.8344, lat: 32.9370, city: "淮南" },
+                { lng: 115.8155, lat: 32.8015, city: "阜阳" },
+                { lng: 121.4737, lat: 31.2304, city: "上海" },
+                { lng: 120.1936, lat: 30.2741, city: "浙江" },
+                { lng: 118.7969, lat: 32.0603, city: "南京" },
+                { lng: 108.9480, lat: 34.2619, city: "陕西" }
             ];
 
             starMarkers.forEach(function(point) {
@@ -65,32 +67,123 @@
             });
             </script>
             
-            <div class="photos-grid">
+            <div class="gallery-wall">
                 <h3 class="section-title">旅行相册</h3>
-                <div class="photos-container">
-                    <div class="photo-item">
-                        <div class="photo-placeholder">🗼</div>
-                        <p class="photo-caption">上海 · 外滩</p>
+                <div class="perspective-container">
+                    <div class="gallery-grid">
+                        <div class="gallery-card" data-city="合肥" data-label="安徽 · 省会" data-emoji="🏙️">
+                            <div class="card-inner">
+                                <div class="card-face card-front">
+                                    <span class="emoji-icon">🏙️</span>
+                                </div>
+                                <div class="card-face card-back">
+                                    <span class="card-city">合肥</span>
+                                    <span class="card-label">安徽 · 省会</span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="gallery-card small" data-city="淮南" data-label="安理校园" data-emoji="🏘️">
+                            <div class="card-inner">
+                                <div class="card-face card-front">
+                                    <span class="emoji-icon">🏘️</span>
+                                </div>
+                                <div class="card-face card-back">
+                                    <span class="card-city">淮南</span>
+                                    <span class="card-label">安理校园</span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="gallery-card wide" data-city="上海" data-label="外滩夜景" data-emoji="🗼">
+                            <div class="card-inner">
+                                <div class="card-face card-front">
+                                    <span class="emoji-icon">🗼</span>
+                                </div>
+                                <div class="card-face card-back">
+                                    <span class="card-city">上海</span>
+                                    <span class="card-label">外滩夜景</span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="gallery-card tall" data-city="杭州" data-label="西湖美景" data-emoji="🏯">
+                            <div class="card-inner">
+                                <div class="card-face card-front">
+                                    <span class="emoji-icon">🏯</span>
+                                </div>
+                                <div class="card-face card-back">
+                                    <span class="card-city">杭州</span>
+                                    <span class="card-label">西湖美景</span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="gallery-card" data-city="阜阳" data-label="安徽 · 故乡" data-emoji="🌾">
+                            <div class="card-inner">
+                                <div class="card-face card-front">
+                                    <span class="emoji-icon">🌾</span>
+                                </div>
+                                <div class="card-face card-back">
+                                    <span class="card-city">阜阳</span>
+                                    <span class="card-label">安徽 · 故乡</span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="gallery-card small" data-city="南京" data-label="中山陵园" data-emoji="🏛️">
+                            <div class="card-inner">
+                                <div class="card-face card-front">
+                                    <span class="emoji-icon">🏛️</span>
+                                </div>
+                                <div class="card-face card-back">
+                                    <span class="card-city">南京</span>
+                                    <span class="card-label">中山陵园</span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="gallery-card" data-city="西安" data-label="兵马俑" data-emoji="🕌">
+                            <div class="card-inner">
+                                <div class="card-face card-front">
+                                    <span class="emoji-icon">🕌</span>
+                                </div>
+                                <div class="card-face card-back">
+                                    <span class="card-city">西安</span>
+                                    <span class="card-label">兵马俑</span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="gallery-card wide" data-city="北京" data-label="故宫" data-emoji="🏯">
+                            <div class="card-inner">
+                                <div class="card-face card-front">
+                                    <span class="emoji-icon">🏯</span>
+                                </div>
+                                <div class="card-face card-back">
+                                    <span class="card-city">北京</span>
+                                    <span class="card-label">故宫</span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="gallery-card tall" data-city="成都" data-label="大熊猫基地" data-emoji="🐼">
+                            <div class="card-inner">
+                                <div class="card-face card-front">
+                                    <span class="emoji-icon">🐼</span>
+                                </div>
+                                <div class="card-face card-back">
+                                    <span class="card-city">成都</span>
+                                    <span class="card-label">大熊猫基地</span>
+                                </div>
+                            </div>
+                        </div>
                     </div>
-                    <div class="photo-item">
-                        <div class="photo-placeholder">🏯</div>
-                        <p class="photo-caption">北京 · 故宫</p>
+                    <div class="gallery-hint">
+                        <span>👆 点击图片查看详情</span>
                     </div>
-                    <div class="photo-item">
-                        <div class="photo-placeholder">🌆</div>
-                        <p class="photo-caption">广州 · 小蛮腰</p>
-                    </div>
-                    <div class="photo-item">
-                        <div class="photo-placeholder">🏔️</div>
-                        <p class="photo-caption">成都 · 青城山</p>
-                    </div>
-                    <div class="photo-item">
-                        <div class="photo-placeholder">🌊</div>
-                        <p class="photo-caption">厦门 · 鼓浪屿</p>
-                    </div>
-                    <div class="photo-item">
-                        <div class="photo-placeholder">🏮</div>
-                        <p class="photo-caption">西安 · 兵马俑</p>
+                </div>
+                
+                <div class="modal-overlay" id="modal">
+                    <div class="modal-content">
+                        <span class="modal-close">&times;</span>
+                        <div class="modal-emoji"></div>
+                        <div class="modal-info">
+                            <h2 class="modal-city"></h2>
+                            <p class="modal-label"></p>
+                        </div>
                     </div>
                 </div>
             </div>

@@ -4,20 +4,73 @@ document.addEventListener('DOMContentLoaded', function() {
     const skillItems = document.querySelectorAll('.skill-item');
     const contactItems = document.querySelectorAll('.contact-item');
 
-    const typingTextElement = document.querySelector('#intro-typing');
-    if (typingTextElement) {
-        const fullText = ' | AI Agent 开发者';
-        let index = 0;
+    const line1 = document.getElementById('typing-line-1');
+    const line2 = document.getElementById('typing-line-2');
+    const line3 = document.getElementById('typing-line-3');
+    const line4 = document.getElementById('typing-line-4');
 
-        const typeInterval = setInterval(() => {
-            if (index < fullText.length) {
-                typingTextElement.textContent += fullText[index];
-                index++;
+    if (line1) line1.classList.add('line-1');
+    if (line2) line2.classList.add('line-2');
+    if (line3) line3.classList.add('line-3');
+    if (line4) line4.classList.add('line-4');
+
+    const text1 = 'Hello, I\'m';
+    const text2 = '<span class="shiny-text" id="shiny-name">小羊星冰乐</span>';
+    const text3 = '<span class="highlight">安理计算机28届学子</span> | AI Agent 开发者';
+    const text4 = '每一步向前，都在成为更好的自己。Let\'s build something amazing together.';
+
+    let currentLine = 1;
+    let currentText = text1;
+    let currentElement = line1;
+    let currentChar = 0;
+
+    const typeNext = () => {
+        if (!currentElement) return;
+
+        if (currentChar >= currentText.length) {
+            if (currentLine === 1) {
+                currentLine = 2;
+                currentText = text2;
+                currentElement = line2;
+                currentChar = 0;
+                setTimeout(typeNext, 200);
+                return;
+            } else if (currentLine === 2) {
+                currentLine = 3;
+                currentText = text3;
+                currentElement = line3;
+                currentChar = 0;
+                setTimeout(typeNext, 200);
+                return;
+            } else if (currentLine === 3) {
+                currentLine = 4;
+                currentText = text4;
+                currentElement = line4;
+                currentChar = 0;
+                setTimeout(typeNext, 200);
+                return;
             } else {
-                clearInterval(typeInterval);
+                return;
             }
-        }, 100);
-    }
+        }
+
+        const char = currentText[currentChar];
+        
+        if (char === '<') {
+            const tagEnd = currentText.indexOf('>', currentChar);
+            if (tagEnd !== -1) {
+                currentElement.innerHTML += currentText.substring(currentChar, tagEnd + 1);
+                currentChar = tagEnd + 1;
+            }
+        } else {
+            currentElement.innerHTML += char;
+            currentChar++;
+        }
+
+        setTimeout(typeNext, 40);
+    };
+
+    setTimeout(typeNext, 500);
 
     const mapMarkers = document.querySelectorAll('.map-marker');
     mapMarkers.forEach(marker => {
@@ -124,7 +177,7 @@ document.addEventListener('DOMContentLoaded', function() {
         const scrollY = window.scrollY;
         const header = document.querySelector('.header');
 
-        if (scrollY > 50) {
+        if (header && scrollY > 50) {
             header.style.transform = 'translateY(0)';
         }
     });
@@ -204,3 +257,154 @@ function closeCityPanel() {
         cityPanel.style.display = 'none';
     }
 }
+
+document.addEventListener('DOMContentLoaded', function() {
+    const galleryCards = document.querySelectorAll('.gallery-card');
+    const modal = document.getElementById('modal');
+    const modalClose = document.querySelector('.modal-close');
+    const modalEmoji = document.querySelector('.modal-emoji');
+    const modalCity = document.querySelector('.modal-city');
+    const modalLabel = document.querySelector('.modal-label');
+
+    galleryCards.forEach(card => {
+        card.addEventListener('click', function() {
+            const city = this.getAttribute('data-city');
+            const label = this.getAttribute('data-label');
+            const emoji = this.getAttribute('data-emoji');
+
+            if (modalEmoji) modalEmoji.textContent = emoji || '🏙️';
+            if (modalCity) modalCity.textContent = city || '未知城市';
+            if (modalLabel) modalLabel.textContent = label || '';
+
+            if (modal) {
+                modal.classList.add('active');
+                document.body.style.overflow = 'hidden';
+            }
+        });
+    });
+
+    if (modalClose) {
+        modalClose.addEventListener('click', function() {
+            if (modal) {
+                modal.classList.remove('active');
+                document.body.style.overflow = '';
+            }
+        });
+    }
+
+    if (modal) {
+        modal.addEventListener('click', function(e) {
+            if (e.target === modal) {
+                modal.classList.remove('active');
+                document.body.style.overflow = '';
+            }
+        });
+    }
+});
+
+document.addEventListener('DOMContentLoaded', function() {
+    const scrollContainer = document.getElementById('projects-scroll');
+    if (!scrollContainer) return;
+
+    const items = scrollContainer.querySelectorAll('.scroll-stack-item');
+    const wrapper = scrollContainer.querySelector('.scroll-stack-wrapper');
+    const endElement = scrollContainer.querySelector('.scroll-stack-end');
+
+    const config = {
+        itemDistance: 80,
+        itemScale: 0.04,
+        baseScale: 0.85,
+        stackPosition: '20%',
+        scaleEndPosition: '10%'
+    };
+
+    let lenis = null;
+    let rafId = null;
+    let lastTransforms = new Map();
+
+    const parsePercentage = (value, containerHeight) => {
+        if (typeof value === 'string' && value.includes('%')) {
+            return (parseFloat(value) / 100) * containerHeight;
+        }
+        return parseFloat(value);
+    };
+
+    const calculateProgress = (scrollTop, start, end) => {
+        if (scrollTop < start) return 0;
+        if (scrollTop > end) return 1;
+        return (scrollTop - start) / (end - start);
+    };
+
+    const getElementOffset = (element) => {
+        return element.offsetTop;
+    };
+
+    const updateTransforms = () => {
+        if (!items.length) return;
+
+        const scrollTop = scrollContainer.scrollTop;
+        const containerHeight = scrollContainer.clientHeight;
+        const stackPositionPx = parsePercentage(config.stackPosition, containerHeight);
+        const scaleEndPositionPx = parsePercentage(config.scaleEndPosition, containerHeight);
+
+        const endElementTop = endElement ? getElementOffset(endElement) : 0;
+
+        items.forEach((card, i) => {
+            if (!card) return;
+
+            const cardTop = getElementOffset(card);
+            const triggerStart = cardTop - stackPositionPx - config.itemDistance * i;
+            const triggerEnd = cardTop - scaleEndPositionPx;
+
+            const scaleProgress = calculateProgress(scrollTop, triggerStart, triggerEnd);
+            const targetScale = config.baseScale + i * config.itemScale;
+            const scale = 1 - scaleProgress * (1 - targetScale);
+
+            const newTransform = {
+                scale: Math.round(scale * 1000) / 1000
+            };
+
+            const lastTransform = lastTransforms.get(i);
+            const hasChanged = !lastTransform || Math.abs(lastTransform.scale - newTransform.scale) > 0.001;
+
+            if (hasChanged) {
+                const transform = `scale(${newTransform.scale})`;
+                card.style.transform = transform;
+                lastTransforms.set(i, newTransform);
+            }
+        });
+    };
+
+    const initLenis = () => {
+        if (typeof Lenis !== 'undefined') {
+            lenis = new Lenis({
+                wrapper: scrollContainer,
+                content: wrapper,
+                duration: 1.2,
+                easing: t => Math.min(1, 1.001 - Math.pow(2, -10 * t)),
+                smoothWheel: true,
+                wheelMultiplier: 1,
+                lerp: 0.1
+            });
+
+            lenis.on('scroll', updateTransforms);
+
+            const raf = (time) => {
+                lenis.raf(time);
+                rafId = requestAnimationFrame(raf);
+            };
+            rafId = requestAnimationFrame(raf);
+        } else {
+            scrollContainer.addEventListener('scroll', updateTransforms, { passive: true });
+        }
+    };
+
+    items.forEach((card, i) => {
+        card.style.willChange = 'transform';
+        card.style.transformOrigin = 'top center';
+        card.style.backfaceVisibility = 'hidden';
+    });
+
+    initLenis();
+    updateTransforms();
+});
