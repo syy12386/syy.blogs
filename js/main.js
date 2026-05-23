@@ -262,19 +262,15 @@ document.addEventListener('DOMContentLoaded', function() {
     const galleryCards = document.querySelectorAll('.gallery-card');
     const modal = document.getElementById('modal');
     const modalClose = document.querySelector('.modal-close');
-    const modalEmoji = document.querySelector('.modal-emoji');
-    const modalCity = document.querySelector('.modal-city');
-    const modalLabel = document.querySelector('.modal-label');
+    const modalImage = document.getElementById('modalImage');
 
     galleryCards.forEach(card => {
         card.addEventListener('click', function() {
-            const city = this.getAttribute('data-city');
-            const label = this.getAttribute('data-label');
-            const emoji = this.getAttribute('data-emoji');
-
-            if (modalEmoji) modalEmoji.textContent = emoji || '🏙️';
-            if (modalCity) modalCity.textContent = city || '未知城市';
-            if (modalLabel) modalLabel.textContent = label || '';
+            const img = this.querySelector('img');
+            if (img && modalImage) {
+                modalImage.src = img.src;
+                modalImage.alt = img.alt || '照片';
+            }
 
             if (modal) {
                 modal.classList.add('active');
@@ -288,6 +284,9 @@ document.addEventListener('DOMContentLoaded', function() {
             if (modal) {
                 modal.classList.remove('active');
                 document.body.style.overflow = '';
+                if (modalImage) {
+                    modalImage.src = '';
+                }
             }
         });
     }
@@ -297,6 +296,9 @@ document.addEventListener('DOMContentLoaded', function() {
             if (e.target === modal) {
                 modal.classList.remove('active');
                 document.body.style.overflow = '';
+                if (modalImage) {
+                    modalImage.src = '';
+                }
             }
         });
     }
