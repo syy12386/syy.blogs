@@ -16,7 +16,7 @@ document.addEventListener('DOMContentLoaded', function() {
 
     const text1 = 'Hello, I\'m';
     const text2 = '<span class="shiny-text" id="shiny-name">小羊星冰乐</span>';
-    const text3 = '<span class="highlight">安理计算机28届学子</span> | AI Agent 开发者';
+    const text3 = '<span class="highlight">安理计算机28届学子</span> | 后端开发者，正在努力学习AI Coding中...';
     const text4 = '每一步向前，都在成为更好的自己。Let\'s build something amazing together.';
 
     let currentLine = 1;
