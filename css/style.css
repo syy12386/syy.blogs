@@ -303,9 +303,9 @@ body {
     background-color: #0066FF;
 }
 
-.social-list .icon-content a[data-social="linkedin"] .filled,
-.social-list .icon-content a[data-social="linkedin"] ~ .tooltip {
-    background-color: #0274b3;
+.social-list .icon-content a[data-social="csdn"] .filled,
+.social-list .icon-content a[data-social="csdn"] ~ .tooltip {
+    background-color: #ff6a00;
 }
 
 .social-list .icon-content a[data-social="github"] .filled,
